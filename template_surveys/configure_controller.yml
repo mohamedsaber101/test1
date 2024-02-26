@@ -1,0 +1,15 @@
+---
+name: ''
+description: ''
+spec:
+- question_name: Select AAP environment
+  question_description: Prod or DR
+  required: true
+  type: multiplechoice
+  variable: aap_env
+  min:
+  max:
+  default: ''
+  choices: |-
+    Prod
+    DR

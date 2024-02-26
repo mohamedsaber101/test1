@@ -1,0 +1,31 @@
+---
+controller_templates:
+- name: Update AAP Controller Configuration
+  description: Configure controller playbook (ansible-config)
+  organization: Default
+  job_type: run
+  inventory: localhost - default
+  project: ansible-config
+  execution_environment: Enhanced AAP 2.3 RHEL 8 - default
+  playbook: configure_controller.yml
+  credentials:
+  - ansible-config vault
+  extra_vars: null
+  scm_branch: develop
+  survey_enabled: true
+  survey: "{{ lookup('ansible.builtin.template', 'template_surveys/configure_controller.yml') | from_yaml }}"
+
+- name: Update AAP Controller Configuration - Run Roles
+  description: Run configure controller roles playbook (ansible-config)
+  organization: Default
+  job_type: run
+  inventory: localhost - default
+  project: ansible-config
+  execution_environment: Enhanced AAP 2.3 RHEL 8 - default
+  playbook: run_configure_controller_roles.yml
+  credentials:
+  - ansible-config vault
+  extra_vars: null
+  scm_branch: develop
+  survey_enabled: true
+  survey: "{{ lookup('ansible.builtin.template', 'template_surveys/run_configure_controller_roles.yml') | from_yaml }}"  

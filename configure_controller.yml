@@ -1,0 +1,35 @@
+---
+- name: Playbook to configure ansible controller post installation
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  vars:
+    aap_env: dev #prod
+  pre_tasks:
+    - name: Include AAP authentication vars file
+      ansible.builtin.include_vars:
+        file: ./controller_auth_configs/{{ aap_env | lower }}_controller_auth.yml
+
+    - name: Include vars from controller_configs directory
+      ansible.builtin.include_vars:
+        dir: ./controller_configs
+        ignore_files: [controller_config.yml.template]
+        extensions: ["yml"]
+
+  roles:
+    - {role: redhat_cop.controller_configuration.license, when: controller_license is defined}
+    # - {role: redhat_cop.controller_configuration.settings, when: controller_settings is defined}
+    - {role: redhat_cop.controller_configuration.organizations, when: controller_organizations is defined}
+    - {role: redhat_cop.controller_configuration.teams, when: controller_teams is defined}
+    - {role: redhat_cop.controller_configuration.roles, when: controller_roles is defined}
+    - {role: redhat_cop.controller_configuration.credential_types, when: controller_credential_types is defined}
+    - {role: redhat_cop.controller_configuration.credentials, when: controller_credentials is defined}
+    - {role: redhat_cop.controller_configuration.credential_input_sources, when: controller_credential_input_sources is defined}
+    - {role: redhat_cop.controller_configuration.inventories, when: controller_inventories is defined}
+    - {role: redhat_cop.controller_configuration.inventory_sources, when: controller_inventory_sources is defined}
+    - {role: redhat_cop.controller_configuration.hosts, when: controller_hosts is defined}
+    - {role: redhat_cop.controller_configuration.projects, when: controller_projects is defined}
+    - {role: redhat_cop.controller_configuration.execution_environments, when: controller_execution_environments is defined}
+    - {role: redhat_cop.controller_configuration.notification_templates, when: controller_notifications is defined}
+    - {role: redhat_cop.controller_configuration.job_templates, when: controller_templates is defined}
+    - {role: redhat_cop.controller_configuration.schedules, when: controller_schedules is defined}

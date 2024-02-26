@@ -1,0 +1,102 @@
+---
+controller_settings:
+- name: ALLOW_OAUTH2_FOR_EXTERNAL_USERS
+  value: true
+- name: AUTH_LDAP_1_SERVER_URI
+  value: ldaps://ec2-PSvcDir1a1.equitrans.com:636
+- name: AUTH_LDAP_1_BIND_DN
+  value: CN=sa_ansible_ldap,OU=AWS_Service,OU=Users,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+- name: AUTH_LDAP_1_BIND_PASSWORD
+  value: !vault |
+    $ANSIBLE_VAULT;1.1;AES256
+    66313439633437356539613634626234303332366533633464313361306232376537303965613930
+    6337633739613965633863396237633636343064393961330a383033366439346134316333656431
+    39613038353661353633666437393935666234626434333039313137343931626436626331666461
+    3266616561653330360a383461626137666337666437303039323536343262633464326430363334
+    3434
+- name: AUTH_LDAP_1_START_TLS
+  value: false
+- name: AUTH_LDAP_1_CONNECTION_OPTIONS
+  value:
+    OPT_REFERRALS: 0
+    OPT_NETWORK_TIMEOUT: 30
+- name: AUTH_LDAP_1_USER_SEARCH
+  value:
+  - OU=Users,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+  - SCOPE_SUBTREE
+  - "(sAMAccountName=%(user)s)"
+- name: AUTH_LDAP_1_USER_DN_TEMPLATE
+  value: ''
+- name: AUTH_LDAP_1_USER_ATTR_MAP
+  value:
+    first_name: givenName
+    last_name: sn
+    email: mail
+- name: AUTH_LDAP_1_GROUP_SEARCH
+  value:
+  - OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+  - SCOPE_SUBTREE
+  - "(|(objectclass=group)(objectclass=groupofnames)(objectclass=groupofuniquenames))"
+- name: AUTH_LDAP_1_GROUP_TYPE
+  value: ActiveDirectoryGroupType
+- name: AUTH_LDAP_1_GROUP_TYPE_PARAMS
+  value:
+    name_attr: cn
+- name: AUTH_LDAP_1_REQUIRE_GROUP
+  value: CN=Ansible_Tower_Users,OU=Ansible,OU=Security,OU=AWS,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+- name: AUTH_LDAP_1_DENY_GROUP
+  value: ''
+- name: AUTH_LDAP_1_USER_FLAGS_BY_GROUP
+  value:
+    is_superuser:
+    - CN=Ansible_Admins,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+- name: AUTH_LDAP_1_ORGANIZATION_MAP
+  value:
+    Default:
+      admins: CN=Ansible_Admins,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+      remove_admins: true
+      remove_users: true      
+    Applications:
+      admins: CN=Ansible_Applications_Admins,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+      remove_admins: true
+      remove_users: true
+      users:
+      - CN=Ansible_Applications_Users,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+      - CN=Ansible_Applications_Admins,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+    Self-service:
+      admins: CN=Ansible_Self-service_Admins,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+      remove_admins: true
+      remove_users: true
+      users:
+      - CN=Ansible_Self-service_Users,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+      - CN=Ansible_Self-service_Admins,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+- name: AUTH_LDAP_1_TEAM_MAP
+  value:
+    applications-users:
+      organization: Applications
+      remove: true
+      users: CN=Ansible_Applications_Users,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+    self-service-users:
+      organization: Self-service
+      remove: true
+      users: CN=Ansible_Self-service_Users,OU=Security,OU=Groups,OU=Midstream,OU=BusinessUnits,DC=equitrans,DC=com
+- name: LOG_AGGREGATOR_HOST
+  value: 172.16.37.164
+- name: LOG_AGGREGATOR_PORT
+  value: 2224
+- name: LOG_AGGREGATOR_TYPE
+  value: sumologic
+- name: LOG_AGGREGATOR_PROTOCOL
+  value: tcp
+- name: LOG_AGGREGATOR_ENABLED
+  value: true
+- name: AWX_TASK_ENV
+  value:  
+    VAULT_SECRET_ID: !vault |
+      $ANSIBLE_VAULT;1.2;AES256;ansible-config
+      33303764386131666663393761373935356632396361333362366230666633653261346434653832
+      3632633366386664383738636265373261623938656464300a393362343666326634333231663230
+      30623866306165646362376363343736383166346438373630613331333037643637313936656530
+      6366616164313438660a306632643363333830656431303239663339366635323434306136653462
+      39306436343834636465333435613536666631303831366638633262663066306662313738323532
+      6433313330383837313336366161653639316233393634353737

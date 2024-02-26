@@ -1,0 +1,23 @@
+---
+# vars:
+# aap_env
+# controller_config_roles
+
+- name: Playbook to run ansible controller post installation roles
+  hosts: localhost
+  connection: local
+  pre_tasks:
+    - name: Include AAP authentication vars file
+      ansible.builtin.include_vars:
+        file: ./controller_auth_configs/{{ aap_env | lower }}_controller_auth.yml
+
+    - name: Include vars from controller_configs directory
+      ansible.builtin.include_vars:
+        dir: ./controller_configs
+        ignore_files: [controller_config.yml.template]
+        extensions: ["yml"]
+  tasks:
+    - name: Run controller config roles
+      ansible.builtin.include_role:
+        name: redhat_cop.controller_configuration.{{ item }}
+      with_items: "{{ controller_config_roles }}"

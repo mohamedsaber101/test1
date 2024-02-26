@@ -1,0 +1,5 @@
+---
+controller_license:
+  manifest_file: files/license.zip
+  force: true
+  state: present

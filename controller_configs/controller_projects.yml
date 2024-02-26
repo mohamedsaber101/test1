@@ -1,0 +1,15 @@
+---
+controller_projects:
+# AAP and self-service configuration
+- name: ansible-config
+  description: AAP configuration git repository (ansible-config)
+  organization: Default
+  credential: ansible-config repo
+  allow_override: true
+  scm_branch: main
+  scm_clean: false
+  scm_delete_on_update: false
+  scm_type: git
+  scm_update_cache_timeout: 60  
+  scm_update_on_launch: true
+  scm_url: https://gitlab.com/equitrans/automation-tools/ansible-platform/ansible-config.git

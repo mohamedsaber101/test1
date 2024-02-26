@@ -1,0 +1,40 @@
+---
+name: ''
+description: ''
+spec:
+- question_name: Select AAP environment
+  question_description: Prod or DR
+  required: true
+  type: multiplechoice
+  variable: aap_env
+  min:
+  max:
+  default: ''
+  choices: |-
+    Prod
+    DR
+- question_name: Select roles to run
+  question_description: Prod or DR
+  required: true
+  type: multiselect
+  variable: controller_config_roles
+  min:
+  max:
+  default: ''
+  choices: |-
+    license
+    settings
+    organizations
+    teams
+    roles
+    credential_types
+    credentials
+    credential_input_sources
+    inventories
+    inventory_sources
+    hosts
+    projects
+    execution_environments
+    notification_templates
+    job_templates
+    schedules

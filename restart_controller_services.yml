@@ -1,0 +1,8 @@
+---
+- name: Playbook to restart AAP controller services
+  hosts: "{{ aap_env }}"
+  become: true
+
+  tasks:
+  - name: Restart AAP controller services
+    ansible.builtin.command: automation-controller-service restart

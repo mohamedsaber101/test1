@@ -1,0 +1,14 @@
+2024-02-24 11:43:34,292 p=116106 u=w n=ansible | PLAY [Playbook to configure ansible controller post installation] *****************
+2024-02-24 11:43:34,310 p=116106 u=w n=ansible | TASK [Gathering Facts] ************************************************************
+2024-02-24 11:43:35,897 p=116106 u=w n=ansible | ok: [localhost]
+2024-02-24 11:43:35,921 p=116106 u=w n=ansible | TASK [Include AAP authentication vars file] ***************************************
+2024-02-24 11:43:36,006 p=116106 u=w n=ansible | ok: [localhost]
+2024-02-24 11:43:36,022 p=116106 u=w n=ansible | TASK [Include vars from controller_configs directory] *****************************
+2024-02-24 11:43:36,047 p=116106 u=w n=ansible | ok: [localhost]
+2024-02-24 11:43:36,060 p=116106 u=w n=ansible | TASK [organizations : Add organizations] ******************************************
+2024-02-24 11:43:36,127 p=116106 u=w n=ansible | fatal: [localhost]: FAILED! => {"msg": "Attempting to decrypt but no vault secrets found"}
+2024-02-24 11:43:36,128 p=116106 u=w n=ansible | PLAY RECAP ************************************************************************
+2024-02-24 11:43:36,128 p=116106 u=w n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-02-24 11:44:23,016 p=116266 u=w n=ansible | Encryption successful
+2024-02-24 11:48:05,495 p=116507 u=w n=ansible | Encryption successful
+2024-02-24 11:48:18,257 p=116524 u=w n=ansible | ERROR! The vault password file /home/w/crl/crl/password1 was not found

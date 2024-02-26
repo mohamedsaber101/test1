@@ -1,0 +1,6 @@
+---
+controller_hosts:
+- name: localhost - default
+  description: localhost (ansible-config)
+  inventory: localhost - default
+  enabled: true

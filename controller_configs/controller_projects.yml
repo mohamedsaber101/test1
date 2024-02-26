@@ -4,9 +4,9 @@ controller_projects:
 - name: ansible-config
   description: AAP configuration git repository (ansible-config)
   organization: Default
-  credential: ansible-config repo
+  # credential: ansible-config repo
   allow_override: true
-  scm_branch: main
+  scm_branch: master
   scm_clean: false
   scm_delete_on_update: false
   scm_type: git

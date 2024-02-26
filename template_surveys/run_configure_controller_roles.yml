@@ -14,7 +14,7 @@ spec:
     Prod
     DR
 - question_name: Select roles to run
-  question_description: Prod or DR
+  question_description: Roles to run
   required: true
   type: multiselect
   variable: controller_config_roles

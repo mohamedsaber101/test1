@@ -3,7 +3,7 @@ name: ''
 description: ''
 spec:
 - question_name: Select AAP environment
-  question_description: Prod or DR
+  question_description: Prod or Dev
   required: true
   type: multiplechoice
   variable: aap_env
@@ -11,5 +11,5 @@ spec:
   max:
   default: ''
   choices: |-
-    Prod
-    DR
+    prod
+    dev

@@ -3,7 +3,8 @@ controller_execution_environments:
   - name: Enhanced AAP 2.3 RHEL 8 - default
     description: Enhanced EE 2.3 RHEL 8 (ansible-config)
     organization: Default
-    image: registry.gitlab.com/equitrans/automation-tools/ansible-platform/ansible-config/aap-23-rhel8:0.2
+    # image: registry.gitlab.com/equitrans/automation-tools/ansible-platform/ansible-config/aap-23-rhel8:0.2
+    image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
     pull: missing
-    credential: ansible-config registry
+    # credential: ansible-config registry
 

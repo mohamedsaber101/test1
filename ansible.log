@@ -12,3 +12,6 @@
 2024-02-24 11:44:23,016 p=116266 u=w n=ansible | Encryption successful
 2024-02-24 11:48:05,495 p=116507 u=w n=ansible | Encryption successful
 2024-02-24 11:48:18,257 p=116524 u=w n=ansible | ERROR! The vault password file /home/w/crl/crl/password1 was not found
+2024-02-26 14:23:47,423 p=9454 u=w n=ansible |  [ERROR]: User interrupted execution
+
+2024-02-26 14:24:41,403 p=9490 u=w n=ansible | Encryption successful

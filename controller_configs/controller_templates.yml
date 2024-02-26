@@ -11,7 +11,7 @@ controller_templates:
   credentials:
   - ansible-config vault
   extra_vars: null
-  scm_branch: develop
+  scm_branch: master
   survey_enabled: true
   survey: "{{ lookup('ansible.builtin.template', 'template_surveys/configure_controller.yml') | from_yaml }}"
 
@@ -26,6 +26,6 @@ controller_templates:
   credentials:
   - ansible-config vault
   extra_vars: null
-  scm_branch: develop
+  scm_branch: master
   survey_enabled: true
   survey: "{{ lookup('ansible.builtin.template', 'template_surveys/run_configure_controller_roles.yml') | from_yaml }}"  

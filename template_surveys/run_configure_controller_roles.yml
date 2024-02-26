@@ -11,8 +11,8 @@ spec:
   max:
   default: ''
   choices: |-
-    Prod
-    DR
+    prod
+    dev
 - question_name: Select roles to run
   question_description: Roles to run
   required: true

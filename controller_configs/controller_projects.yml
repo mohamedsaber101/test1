@@ -12,4 +12,4 @@ controller_projects:
   scm_type: git
   scm_update_cache_timeout: 60  
   scm_update_on_launch: true
-  scm_url: https://gitlab.com/equitrans/automation-tools/ansible-platform/ansible-config.git
+  scm_url: https://github.com/mohamedsaber101/test1.git
